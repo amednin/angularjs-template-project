@@ -1,0 +1,16 @@
+{
+  "name": "angular-template-project",
+  "description": "A starter project for AngularJS",
+  "version": "0.0.0",
+  "homepage": "",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.3.x",
+    "angular-mocks": "1.3.x",
+    "bootstrap": "~3.1.1",
+    "angular-ui-router": "~0.2.14",
+    "angular-resource": "1.3.x",
+    "angular-animate": "1.3.x"
+  }
+}
