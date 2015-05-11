@@ -1,7 +1,6 @@
-angular.module('mainApp')
+mainApp
 .controller('ProductsController', ['$scope', 'ProductsService', function ($scope, ProductsService) {
-	console.log($scope.products);
-	alert('hola');
-	$scope.products = ProductsService.query();
 
+	$scope.products = ProductsService.query();
+	
 }]);

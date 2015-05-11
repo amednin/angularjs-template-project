@@ -1,3 +1,16 @@
-<div class="row">
-	<div class="col-md-4" ng-repeat="prod in products">{{ prod }}</div>
-</div>
+<table class="table table-striped">
+  <tr>
+    <th>Number</th>
+    <th>State</th>
+    <th>Reporter</th>
+    <th>Title</th>
+    <th>Description</th>
+  </tr>
+  <tr ng-repeat="issue in products">
+    <td>{{issue.number}}</td>
+    <td>{{issue.state}}</td>
+    <td>{{issue.user.login}}</td>
+    <td>{{issue.title}}</td>
+    <td>{{issue.body}}</td>
+  </tr>
+</table>
