@@ -2,5 +2,6 @@
 
 mainApp
     .factory('ProductsService', ['$resource', function($resource) {
-	return $resource('https://api.github.com/repos/angular/angular.js/issues');
+	    return $resource('http://localhost:99/app_dev.php/api/v1/products', {},
+            {'query': {method: 'GET', isArray: false}});
 }]);
