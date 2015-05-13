@@ -50,22 +50,22 @@ var mainApp = angular
                 {
                   name:'ngAnimate',
                   files:['bower_components/angular-animate/angular-animate.js']
-                })
+                }),
                 $ocLazyLoad.load(
                 {
                   name:'ngCookies',
                   files:['bower_components/angular-cookies/angular-cookies.js']
-                })
+                }),
                 $ocLazyLoad.load(
                 {
                   name:'ngResource',
                   files:['bower_components/angular-resource/angular-resource.js']
-                })
+                }),
                 $ocLazyLoad.load(
                 {
                   name:'ngSanitize',
                   files:['bower_components/angular-sanitize/angular-sanitize.js']
-                })
+                }),
                 $ocLazyLoad.load(
                 {
                   name:'ngTouch',
