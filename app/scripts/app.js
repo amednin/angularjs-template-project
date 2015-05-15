@@ -15,8 +15,16 @@ var mainApp = angular
     'angular-loading-bar',
     'ngResource'
   ])
-  .config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider) {
-    
+  .config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider', '$httpProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider, $httpProvider) {
+
+        //$httpProvider.defaults.useXDomain = true;
+        //delete $httpProvider.defaults.headers.common['X-Requested-With'];
+
+        $httpProvider.defaults.headers.common = {};
+        $httpProvider.defaults.headers.post = {};
+        $httpProvider.defaults.headers.put = {};
+        $httpProvider.defaults.headers.patch = {};
+
     $ocLazyLoadProvider.config({
       debug:false,
       events:true,
