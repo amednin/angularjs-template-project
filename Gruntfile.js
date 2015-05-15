@@ -396,12 +396,12 @@ module.exports = function (grunt) {
         'clean:dist',
         'concurrent:dist',
         'copy:dist',
-        'concat',
         'cssmin',
         'ngAnnotate',
         'uglify',
         'htmlmin',
-        'usemin'
+        'usemin',
+        'concat'
     ]);
 
     grunt.registerTask('default', [

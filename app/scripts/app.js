@@ -12,10 +12,19 @@ var mainApp = angular
     'oc.lazyLoad',
     'ui.router',
     'ui.bootstrap',
-    'angular-loading-bar'
+    'angular-loading-bar',
+    'ngResource'
   ])
-  .config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider) {
-    
+  .config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider', '$httpProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider, $httpProvider) {
+
+        //$httpProvider.defaults.useXDomain = true;
+        //delete $httpProvider.defaults.headers.common['X-Requested-With'];
+
+        $httpProvider.defaults.headers.common = {};
+        $httpProvider.defaults.headers.post = {};
+        $httpProvider.defaults.headers.put = {};
+        $httpProvider.defaults.headers.patch = {};
+
     $ocLazyLoadProvider.config({
       debug:false,
       events:true,
@@ -38,34 +47,34 @@ var mainApp = angular
                     'scripts/directives/sidebar/sidebar.js',
                     'scripts/directives/sidebar/sidebar-search/sidebar-search.js'
                     ]
-                }),
+                })
                 $ocLazyLoad.load(
                 {
                    name:'toggle-switch',
                    files:["bower_components/angular-toggle-switch/angular-toggle-switch.min.js",
                           "bower_components/angular-toggle-switch/angular-toggle-switch.css"
                       ]
-                }),
+                })
                 $ocLazyLoad.load(
                 {
                   name:'ngAnimate',
                   files:['bower_components/angular-animate/angular-animate.js']
-                }),
+                })
                 $ocLazyLoad.load(
                 {
                   name:'ngCookies',
                   files:['bower_components/angular-cookies/angular-cookies.js']
-                }),
+                })
                 $ocLazyLoad.load(
                 {
                   name:'ngResource',
                   files:['bower_components/angular-resource/angular-resource.js']
-                }),
+                })
                 $ocLazyLoad.load(
                 {
                   name:'ngSanitize',
                   files:['bower_components/angular-sanitize/angular-sanitize.js']
-                }),
+                })
                 $ocLazyLoad.load(
                 {
                   name:'ngTouch',
@@ -117,7 +126,7 @@ var mainApp = angular
                 'bower_components/angular-chart.js/dist/angular-chart.min.js',
                 'bower_components/angular-chart.js/dist/angular-chart.css'
               ]
-            }),
+            }).
             $ocLazyLoad.load({
                 name:'sbAdminApp',
                 files:['scripts/controllers/chartContoller.js']
@@ -168,6 +177,21 @@ var mainApp = angular
             }
         }
     })
+
+      .state('dashboard.products',{
+          templateUrl:'views/rest-example/products.html',
+          url:'/products',
+          controller:'ProductsRestController',
+          resolve: {
+              loadMyFile:function($ocLazyLoad) {
+                  return $ocLazyLoad.load({
+                      name:'sbAdminApp',
+                      files:['scripts/services/products.js',
+                          'scripts/controllers/productsRestController.js']
+                  })
+              }
+          }
+      })
   }]);
 
     
