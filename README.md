@@ -17,4 +17,12 @@ Template de la configuración básica para iniciar un proyecto de frontend en an
 - En caso de modificar alguna dependencia, ejecutar:
 ```npm update & bower update```
 
-sudo npm install -g grunt-cli
+- Instalar grunt para ejecutar tareas:
+```sudo npm install -g grunt-cli```
+
+- Levantar el servidor Frontend:
+```grunt serve```
+
+Revisar archivo Gruntfile.js para conocer las configuraciones.
+
+Preguntas: amed.nin@gmail.com, skype: amed.ia
