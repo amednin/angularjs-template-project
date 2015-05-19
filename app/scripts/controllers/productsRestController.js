@@ -15,7 +15,7 @@ angular
 
 
         $scope.nextPage = function (page) {
-            $scope.products = ProductsService.query({page: page}, function () {
+            $scope.products = ProductsService.products.query({page: page}, function () {
                 $scope.currPage = $scope.products.page;
                 $scope.nextPageNum = $scope.currPage + 1;
                 $scope.prevPageNum = $scope.currPage - 1;
@@ -23,7 +23,7 @@ angular
         };
 
         $scope.prevPage = function (page) {
-            $scope.products = ProductsService.query({page: page}, function () {
+            $scope.products = ProductsService.products.query({page: page}, function () {
                 $scope.currPage = $scope.products.page;
                 $scope.nextPageNum = $scope.currPage + 1;
                 $scope.prevPageNum = $scope.currPage - 1;

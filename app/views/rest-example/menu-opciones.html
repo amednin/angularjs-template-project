@@ -1,0 +1,13 @@
+<ul class="nav in" id="side-menu">
+    <li ng-class="{active: collapseVar==2}">
+        <a href="" ng-click="check(2)"><i class="fa fa-sitemap fa-fw"></i>Menu Opciones<span
+                class="fa arrow"></span></a>
+        <ul class="nav nav-second-level" collapse="collapseVar!=2">
+            <li ng-repeat="prod in menuOpciones">
+                <a href="">{{ prod.opcion }}</a>
+            </li>
+        </ul>
+        <!-- /.nav-second-level -->
+    </li>
+
+</ul>

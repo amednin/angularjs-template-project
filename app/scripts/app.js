@@ -192,6 +192,21 @@ var mainApp = angular
               }
           }
       })
+
+        .state('dashboard.menuopciones',{
+            templateUrl:'views/rest-example/menu-opciones.html',
+            url:'/menu-opciones',
+            controller:'ProductsRestController',
+            resolve: {
+                loadMyFile:function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name:'sbAdminApp',
+                        files:['scripts/services/products.js',
+                            'scripts/controllers/MenuOpcionesController.js']
+                    })
+                }
+            }
+        })
   }]);
 
     
