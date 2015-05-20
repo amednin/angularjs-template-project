@@ -3,8 +3,9 @@
 
 // Loading the right environment configurations
 var env = process.env.ENV || 'development';
+console.log(env);
 
-var config = require('./config/' + env + '.json');
+//var config = require('./config/' + env + '.json');
 
 // # Globbing
 // for performance reasons we're only matching one level down:
@@ -28,6 +29,8 @@ module.exports = function (grunt) {
 
     // Define the configuration for all the tasks
     grunt.initConfig({
+
+        env : env,
 
         // Project settings
         yeoman: appConfig,
@@ -244,8 +247,14 @@ module.exports = function (grunt) {
             }
         },
          concat: {
-           dist: {
-           }
+             config_file: {
+                 src: 'app/env/<%= env %>.js',
+                 dest: 'app/scripts/app_config.js'
+             },
+             dist: {
+                 src: ['app/js/*', 'app/scripts/*'],
+                 dest: 'dist/scripts/scripts.js'
+             }
          },
 
         imagemin: {
@@ -297,7 +306,7 @@ module.exports = function (grunt) {
                     expand: true,
                     cwd: '<%= yeoman.app %>/scripts',
                     src: '**/*.js',
-                    dest: '<%= yeoman.dist %>/scripts',
+                    dest: '<%= yeoman.dist %>/scripts'
                 }]
             }
         },
@@ -367,18 +376,6 @@ module.exports = function (grunt) {
                 configFile: 'test/karma.conf.js',
                 singleRun: true
             }
-        },
-
-        // Config Files
-        template: {
-            'config': {
-                'options': {
-                    data: config
-                }
-            },
-            'files': {
-                'app/config.js': ['app/scripts/config.js.tpl']
-            }
         }
     });
 
@@ -389,6 +386,7 @@ module.exports = function (grunt) {
         }
 
         grunt.task.run([
+            'concat:config_file',
             'clean:server',
             'concurrent:server',
             'autoprefixer',
@@ -431,5 +429,4 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-template');
 };

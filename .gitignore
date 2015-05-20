@@ -4,3 +4,4 @@
 .tmp
 /dist
 npm-debug.log
+/app/scripts/app_config.js
