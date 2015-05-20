@@ -1,6 +1,11 @@
 // Generated on 2015-01-21 using generator-angular 0.9.2
 'use strict';
 
+// Loading the right environment configurations
+var env = process.env.ENV || 'development';
+
+var config = require('./config/' + env + '.json');
+
 // # Globbing
 // for performance reasons we're only matching one level down:
 // 'test/spec/{,*/}*.js'
@@ -236,11 +241,12 @@ module.exports = function (grunt) {
             },
             options: {
                 mangle:false
-            },
+            }
         },
-        // concat: {
-        //   dist: {}
-        // },
+         concat: {
+           dist: {
+           }
+         },
 
         imagemin: {
             dist: {
@@ -361,6 +367,18 @@ module.exports = function (grunt) {
                 configFile: 'test/karma.conf.js',
                 singleRun: true
             }
+        },
+
+        // Config Files
+        template: {
+            'config': {
+                'options': {
+                    data: config
+                }
+            },
+            'files': {
+                'app/config.js': ['app/scripts/config.js.tpl']
+            }
         }
     });
 
@@ -407,9 +425,11 @@ module.exports = function (grunt) {
     grunt.registerTask('default', [
         'newer:jshint',
         'test',
-        'build'
+        'build',
+        'template'
     ]);
 
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-template');
 };
