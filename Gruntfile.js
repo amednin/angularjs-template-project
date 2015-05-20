@@ -2,8 +2,7 @@
 'use strict';
 
 // Loading the right environment configurations
-var env = process.env.ENV || 'development';
-console.log(env);
+var envParam = process.env.ENV || 'development';
 
 //var config = require('./config/' + env + '.json');
 
@@ -30,7 +29,7 @@ module.exports = function (grunt) {
     // Define the configuration for all the tasks
     grunt.initConfig({
 
-        env : env,
+        env : envParam,
 
         // Project settings
         yeoman: appConfig,
