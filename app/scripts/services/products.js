@@ -1,9 +1,9 @@
 'use strict';
 
 mainApp
-    .factory('ProductsService', ['$resource', function($resource) {
+    .factory('ProductsService', ['$resource', 'API_CONFIG', function($resource, API_CONFIG) {
         var service = {
-            products: $resource('http://localhost:99/app_dev.php/api/v1/products/:id', null,
+            products: $resource(API_CONFIG.baseUrl + '/products/:id', null,
                 {
                     query: {method: 'GET', isArray: false},
                     update: {
@@ -13,7 +13,7 @@ mainApp
                         method: 'DELETE'
                     }
                 }),
-            menu_options: $resource('http://localhost:99/app_dev.php/api/v1/menu/opciones/:id', null,
+            menu_options: $resource(API_CONFIG.baseUrl + '/menu/opciones/:id', null,
                 {
                     query: {method: 'GET', isArray: false},
                     update: {

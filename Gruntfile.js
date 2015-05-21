@@ -1,6 +1,11 @@
 // Generated on 2015-01-21 using generator-angular 0.9.2
 'use strict';
 
+// Loading the right environment configurations
+var envParam = process.env.ENV || 'development';
+
+//var config = require('./config/' + env + '.json');
+
 // # Globbing
 // for performance reasons we're only matching one level down:
 // 'test/spec/{,*/}*.js'
@@ -23,6 +28,8 @@ module.exports = function (grunt) {
 
     // Define the configuration for all the tasks
     grunt.initConfig({
+
+        env : envParam,
 
         // Project settings
         yeoman: appConfig,
@@ -236,11 +243,18 @@ module.exports = function (grunt) {
             },
             options: {
                 mangle:false
-            },
+            }
         },
-        // concat: {
-        //   dist: {}
-        // },
+         concat: {
+             config_file: {
+                 src: 'app/env/<%= env %>.js',
+                 dest: 'app/scripts/app_config.js'
+             },
+             dist: {
+                 src: ['app/js/*', 'app/scripts/*'],
+                 dest: 'dist/scripts/scripts.js'
+             }
+         },
 
         imagemin: {
             dist: {
@@ -291,7 +305,7 @@ module.exports = function (grunt) {
                     expand: true,
                     cwd: '<%= yeoman.app %>/scripts',
                     src: '**/*.js',
-                    dest: '<%= yeoman.dist %>/scripts',
+                    dest: '<%= yeoman.dist %>/scripts'
                 }]
             }
         },
@@ -371,6 +385,7 @@ module.exports = function (grunt) {
         }
 
         grunt.task.run([
+            'concat:config_file',
             'clean:server',
             'concurrent:server',
             'autoprefixer',
@@ -407,7 +422,8 @@ module.exports = function (grunt) {
     grunt.registerTask('default', [
         'newer:jshint',
         'test',
-        'build'
+        'build',
+        'template'
     ]);
 
     grunt.loadNpmTasks('grunt-contrib-concat');

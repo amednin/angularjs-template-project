@@ -9,7 +9,7 @@ angular
         $scope.currPage = 1;
         $scope.limiteSup = 0;
         $scope.crit = "";
-        $scope.products = ProductsService.query(function (data) {
+        $scope.products = ProductsService.products.query(function (data) {
             $scope.limiteSup = $scope.products.pages;
         });
 

@@ -23,6 +23,20 @@ Template de la configuración básica para iniciar un proyecto de frontend en an
 - Levantar el servidor Frontend:
 ```grunt serve```
 
+- Al iniciar el server con la tarea anterior, se creará un archivo de configuración ```app/scripts/app_config.js```
+el cual tendrá los datos necesarios de configuración para un ambiente de desarrollo. Este archivo es
+ignorado por git ya que debe ser generado automáticamente en cada deploy.
+
+Para generar uno diferente al de desarrollo, se debe agregar un nuevo archivo de config en ```app/env```
+y ejecutar el siguiente comando (Por ejemplo para production.js):
+
+```ENV=production grunt serve```
+
+Así el servidor levantará con el archivo de configuración apropiado al ambiente de deploy.
+
+Si solo se requiere crear el archivo sin levantar el server ejecutar:
+```grunt concat:config_file```
+
 Revisar archivo Gruntfile.js para conocer las configuraciones.
 
 Preguntas: amed.nin@gmail.com, skype: amed.ia
