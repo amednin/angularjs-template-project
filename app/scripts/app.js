@@ -91,7 +91,7 @@ var mainApp = angular
           loadMyFiles:function($ocLazyLoad) {
             return $ocLazyLoad.load({
               name:'sbAdminApp',
-              files:[
+              files:['scripts/services/autenticacion.js',
               'scripts/controllers/main.js',
               'scripts/directives/timeline/timeline.js',
               'scripts/directives/notifications/notifications.js',
@@ -112,7 +112,17 @@ var mainApp = angular
     })
       .state('login',{
         templateUrl:'views/pages/login.html',
-        url:'/login'
+        url:'/login',
+        controller: 'LoginController',
+        resolve: {
+            loadMyFile:function($ocLazyLoad) {
+                return $ocLazyLoad.load({
+                        name:'sbAdminApp',
+                        files:['scripts/services/autenticacion.js',
+                            'scripts/controllers/loginController.js']
+                })
+            }
+        }
     })
       .state('dashboard.chart',{
         templateUrl:'views/chart.html',
