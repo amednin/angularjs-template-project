@@ -11,27 +11,13 @@ angular
 
         $provide.factory('httpInterceptor', ['$rootScope', '$q', '$window', '$injector', function ($rootScope, $q, $window,  $injector) {
 
-            //var SessionHandler;
 
             return {
                 request: function (config) {
                     config.headers = config.headers || {};
 
-                    if ($window.localStorage.token) {
-                       //console.log($window.localStorage.token);
-                       // if (angular.isUndefined(SessionHandler))
-                       // {
-                       //     SessionHandler = $injector.get('SessionHandler');
-                       // }
-                       // console.log(SessionHandler, SessionHandler.validSession());
-                       // if (SessionHandler.validSession())
-                       // {
-                            config.headers['X-Wsse'] =  $window.localStorage.token;
-                        //}
-                        //else
-                        //{
-                        //    SessionHandler.handleExpiredSession();
-                        //}
+                    if ($window.sessionStorage.token) {
+                            config.headers['X-Wsse'] =  $window.sessionStorage.token;
                     }
 
                     return config;
