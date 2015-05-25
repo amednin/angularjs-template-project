@@ -9,8 +9,11 @@ angular
         $scope.currPage = 1;
         $scope.limiteSup = 0;
         $scope.crit = "";
-        $scope.products = ProductsService.products.query(function (data) {
+
+        $scope.products = ProductsService.products.query({isArray: true}, function (data) {
             $scope.limiteSup = $scope.products.pages;
+        }, function (error){
+            console.log(error);
         });
 
 
@@ -40,9 +43,9 @@ angular
                     console.log($scope.entry.id);
                 var $id = $scope.entry.id;
 
-                ProductsService.delete({id: $id}, $scope.entry);
+                ProductsService.products.delete({id: $id}, $scope.entry);
 
-                ProductsService.query(function (data) {
+                ProductsService.products.query(function (data) {
                     $scope.products = data;
                 });
             });

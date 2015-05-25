@@ -1,0 +1,213 @@
+{
+  "id_perfil": 5,
+  "nombre": "Administracion",
+  "descripcion": "Administrador del sistema",
+  "estado": "Activo",
+  "id_opc": [
+    {
+      "id_opc": 13,
+      "opcion": "Administracion",
+      "controlador": "\/admin",
+      "tooltip": "Modulo de administraci\u00f3n del sistema",
+      "estado": "Activo",
+      "id_perfil": []
+    },
+    {
+      "id_opc": 16,
+      "opcion": "Ayuda",
+      "controlador": "\/ayuda",
+      "tooltip": "Ayuda",
+      "estado": "Activo",
+      "id_perfil": {
+        "1": {
+          "id_perfil": 6,
+          "nombre": "Consultas",
+          "descripcion": "Consultas del sistema",
+          "estado": "Activo",
+          "id_opc": {
+            "1": {
+              "id_opc": 17,
+              "opcion": "Manual de usuario",
+              "controlador": "\/ayuda\/manual",
+              "tooltip": "Manual de usuario web",
+              "estado": "Activo",
+              "id_perfil": []
+            },
+            "2": {
+              "id_opc": 18,
+              "opcion": "Descagar Manual de Usuario",
+              "controlador": "\/ayuda\/descargar",
+              "tooltip": "Descagar Manual de Usuario",
+              "estado": "Activo",
+              "id_perfil": []
+            }
+          }
+        }
+      }
+    },
+    {
+      "id_opc": 14,
+      "opcion": "Adm. Usuarios",
+      "controlador": "\/admin\/usuarios",
+      "tooltip": "Modulo de administraci\u00f3n de usuarios",
+      "estado": "Activo",
+      "id_padre": {
+        "id_opc": 13,
+        "opcion": "Administracion",
+        "controlador": "\/admin",
+        "tooltip": "Modulo de administraci\u00f3n del sistema",
+        "estado": "Activo",
+        "id_perfil": []
+      },
+      "id_perfil": []
+    },
+    {
+      "id_opc": 15,
+      "opcion": "Adm. Perfiles",
+      "controlador": "\/admin\/perfiles",
+      "tooltip": "Modulo de administraci\u00f3n de Perfiles",
+      "estado": "Activo",
+      "id_padre": {
+        "id_opc": 13,
+        "opcion": "Administracion",
+        "controlador": "\/admin",
+        "tooltip": "Modulo de administraci\u00f3n del sistema",
+        "estado": "Activo",
+        "id_perfil": []
+      },
+      "id_perfil": []
+    },
+    {
+      "id_opc": 17,
+      "opcion": "Manual de usuario",
+      "controlador": "\/ayuda\/manual",
+      "tooltip": "Manual de usuario web",
+      "estado": "Activo",
+      "id_padre": {
+        "id_opc": 16,
+        "opcion": "Ayuda",
+        "controlador": "\/ayuda",
+        "tooltip": "Ayuda",
+        "estado": "Activo",
+        "id_perfil": {
+          "1": {
+            "id_perfil": 6,
+            "nombre": "Consultas",
+            "descripcion": "Consultas del sistema",
+            "estado": "Activo",
+            "id_opc": {
+              "2": {
+                "id_opc": 18,
+                "opcion": "Descagar Manual de Usuario",
+                "controlador": "\/ayuda\/descargar",
+                "tooltip": "Descagar Manual de Usuario",
+                "estado": "Activo",
+                "id_perfil": []
+              }
+            }
+          }
+        }
+      },
+      "id_perfil": {
+        "1": {
+          "id_perfil": 6,
+          "nombre": "Consultas",
+          "descripcion": "Consultas del sistema",
+          "estado": "Activo",
+          "id_opc": {
+            "0": {
+              "id_opc": 16,
+              "opcion": "Ayuda",
+              "controlador": "\/ayuda",
+              "tooltip": "Ayuda",
+              "estado": "Activo",
+              "id_perfil": []
+            },
+            "2": {
+              "id_opc": 18,
+              "opcion": "Descagar Manual de Usuario",
+              "controlador": "\/ayuda\/descargar",
+              "tooltip": "Descagar Manual de Usuario",
+              "estado": "Activo",
+              "id_padre": {
+                "id_opc": 16,
+                "opcion": "Ayuda",
+                "controlador": "\/ayuda",
+                "tooltip": "Ayuda",
+                "estado": "Activo",
+                "id_perfil": []
+              },
+              "id_perfil": []
+            }
+          }
+        }
+      }
+    },
+    {
+      "id_opc": 18,
+      "opcion": "Descagar Manual de Usuario",
+      "controlador": "\/ayuda\/descargar",
+      "tooltip": "Descagar Manual de Usuario",
+      "estado": "Activo",
+      "id_padre": {
+        "id_opc": 16,
+        "opcion": "Ayuda",
+        "controlador": "\/ayuda",
+        "tooltip": "Ayuda",
+        "estado": "Activo",
+        "id_perfil": {
+          "1": {
+            "id_perfil": 6,
+            "nombre": "Consultas",
+            "descripcion": "Consultas del sistema",
+            "estado": "Activo",
+            "id_opc": {
+              "1": {
+                "id_opc": 17,
+                "opcion": "Manual de usuario",
+                "controlador": "\/ayuda\/manual",
+                "tooltip": "Manual de usuario web",
+                "estado": "Activo",
+                "id_perfil": []
+              }
+            }
+          }
+        }
+      },
+      "id_perfil": {
+        "1": {
+          "id_perfil": 6,
+          "nombre": "Consultas",
+          "descripcion": "Consultas del sistema",
+          "estado": "Activo",
+          "id_opc": [
+            {
+              "id_opc": 16,
+              "opcion": "Ayuda",
+              "controlador": "\/ayuda",
+              "tooltip": "Ayuda",
+              "estado": "Activo",
+              "id_perfil": []
+            },
+            {
+              "id_opc": 17,
+              "opcion": "Manual de usuario",
+              "controlador": "\/ayuda\/manual",
+              "tooltip": "Manual de usuario web",
+              "estado": "Activo",
+              "id_padre": {
+                "id_opc": 16,
+                "opcion": "Ayuda",
+                "controlador": "\/ayuda",
+                "tooltip": "Ayuda",
+                "estado": "Activo",
+                "id_perfil": []
+              },
+              "id_perfil": []
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

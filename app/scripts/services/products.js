@@ -5,7 +5,7 @@ mainApp
         var service = {
             products: $resource(API_CONFIG.baseUrl + '/products/:id', null,
                 {
-                    query: {method: 'GET', isArray: false},
+                    query: {method: 'GET', isArray: true},
                     update: {
                         method: 'PUT'
                     },
