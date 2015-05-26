@@ -9,29 +9,32 @@ angular
     .module('sbAdminApp')
     .config(['$provide', '$httpProvider', function ($provide, $httpProvider) {
 
-        $provide.factory('httpInterceptor', ['$rootScope', '$q', '$window', '$injector', function ($rootScope, $q, $window,  $injector) {
+        $provide.factory('httpInterceptor', ['$q', '$window', '$injector', '$rootScope', function ($q, $window,  $injector, $rootScope) {
 
-            //var SessionHandler;
+            var SessionHandler;
 
             return {
                 request: function (config) {
                     config.headers = config.headers || {};
 
-                    if ($window.localStorage.token) {
-                       //console.log($window.localStorage.token);
-                       // if (angular.isUndefined(SessionHandler))
-                       // {
-                       //     SessionHandler = $injector.get('SessionHandler');
-                       // }
+                    if (angular.isUndefined(SessionHandler) || !SessionHandler)
+                    {
+                        SessionHandler = $injector.get('SessionHandler');
+                    }
+
+                    if (SessionHandler.validSession()) {
+
+
                        // console.log(SessionHandler, SessionHandler.validSession());
-                       // if (SessionHandler.validSession())
-                       // {
+                       if (SessionHandler.validSession())
+                       {
                             config.headers['X-Wsse'] =  $window.localStorage.token;
-                        //}
-                        //else
-                        //{
-                        //    SessionHandler.handleExpiredSession();
-                        //}
+                       }
+                       else
+                       {
+                           SessionHandler.clear();
+                           $rootScope.$broadcast('unauthorized');
+                       }
                     }
 
                     return config;

@@ -7,17 +7,20 @@
 
 angular
     .module('sbAdminApp')
-    .service('SessionHandler', ['$window', '$state', function ($window, $state) {
+    .service('SessionHandler', SessionHandler );
+
+    SessionHandler.$inject = ['$window'];
+
+    function SessionHandler($window)
+    {
         var service =
         {
-            initSession: function (token, redirect) {
+            initSession: function (token) {
                 $window.sessionStorage.token = token;
-                $state.go(redirect);
             },
 
             validSession: function () {
                 var currToken = $window.sessionStorage.token;
-                console.log(currToken);
                 if (currToken)
                 {
                     var expireDate = new Date(currToken.split(/Created=/).replace(/"/g, ""));
@@ -30,15 +33,10 @@ angular
                 }
             },
 
-            handleExpiredSession: function () {
-                if (!angular.isUndefined($window.sessionStorage.token))
-                {
-                    delete $window.sessionStorage.token;
-                }
-
-                $state.go('login');
+            clear: function () {
+                delete $window.sessionStorage.token;
             }
         };
 
         return service;
-    }]);
+    }
