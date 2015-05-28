@@ -7,11 +7,11 @@
 
 angular
     .module('sbAdminApp')
-    .service('SessionHandler', SessionHandler );
+    .service('SessionHandler', SessionHandler);
 
-    SessionHandler.$inject = ['$window'];
+    SessionHandler.$inject = ['$window', 'EXP_SESSION_TIME'];
 
-    function SessionHandler($window)
+    function SessionHandler($window, EXP_SESSION_TIME)
     {
         var service =
         {
@@ -21,16 +21,23 @@ angular
 
             validSession: function () {
                 var currToken = $window.sessionStorage.token;
-                if (currToken)
+
+                if (!angular.isUndefined(currToken) && currToken)
                 {
-                    var expireDate = new Date(currToken.split(/Created=/).replace(/"/g, ""));
+                    var expireDate = new Date(currToken.split(/Created=/)[1].replace(/"/g, ""));
+                    expireDate.setSeconds(expireDate.getSeconds() + EXP_SESSION_TIME.time);
                     var now = new Date();
+
                     return expireDate > now;
                 }
                 else
                 {
                     return false;
                 }
+            },
+            
+            getToken: function () {
+                return $window.sessionStorage.token;
             },
 
             clear: function () {

@@ -11,8 +11,9 @@ angular
             };
 
             $scope.login = function () {
-                $scope.authServ.authenticate.login({username: $scope.credentials.username, password: $scope.credentials.password},
-                    function (data) {
+                $scope.authServ.authenticate.login({username: $scope.credentials.username, password: $scope.credentials.password}
+                ).$promise.then(
+                    function (data) {  // Success
                         if (angular.isUndefined(data.token))
                         {
                             $state.go('login');
@@ -20,7 +21,12 @@ angular
                         else
                         {
                             $scope.authServ.initSession(data.token);
+                            $state.go('dashboard.home');
                         }
-                    });
+                    },
+                    function (reason) { // Error
+
+                    }
+                );
             }
     }]);

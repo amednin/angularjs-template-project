@@ -22,32 +22,29 @@ angular
                         SessionHandler = $injector.get('SessionHandler');
                     }
 
-                    if (SessionHandler.validSession()) {
-
-
-                       // console.log(SessionHandler, SessionHandler.validSession());
-                       if (SessionHandler.validSession())
-                       {
-                            config.headers['X-Wsse'] =  $window.localStorage.token;
-                       }
-                       else
-                       {
-                           SessionHandler.clear();
-                           $rootScope.$broadcast('unauthorized');
-                       }
+                    if (SessionHandler.validSession())
+                    {
+                        config.headers['X-Wsse'] =  SessionHandler.getToken();
                     }
 
                     return config;
                 },
                 response: function (response) {
-                    if (response.status === 401) {
+                    if (response.status === 403) {
                         // handle the case where the user is not authenticated
+                        console.log(response);
+                        $rootScope.$broadcast('unauthorized');
                     }
+
                     return response || $q.when(response);
                 },
                 requestError: function (rejection) {
-
+                    console.log(rejection);
                     return $q.reject(rejection);
+                },
+                responseError: function (rejection) {
+                    console.log(rejection);
+                    $rootScope.$broadcast('unauthorized');
                 }
             };
         }]);

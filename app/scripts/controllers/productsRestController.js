@@ -2,7 +2,7 @@
 
 angular
 .module('sbAdminApp')
-    .controller('ProductsRestController', ['$scope', 'ProductsService', '$state', function ($scope, ProductsService, $state) {
+    .controller('ProductsRestController', ['$rootScope', '$scope', 'ProductsService', '$state', function ($rootScope, $scope, ProductsService, $state) {
 
         $scope.nextPageNum = 2;
         $scope.prevPageNum = 0;
