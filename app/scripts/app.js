@@ -44,6 +44,7 @@ var mainApp = angular
                                 files: [
                                     'scripts/directives/header/header.js',
                                     'scripts/directives/header/header-notification/header-notification.js',
+                                    'scripts/services/MenuService.js',
                                     'scripts/directives/sidebar/sidebar.js',
                                     'scripts/directives/sidebar/sidebar-search/sidebar-search.js'
                                 ]
@@ -218,6 +219,21 @@ var mainApp = angular
                             name: 'sbAdminApp',
                             files: ['scripts/services/products.js',
                                 'scripts/controllers/MenuOpcionesController.js']
+                        })
+                    }
+                }
+            })
+
+            .state('dashboard.crearMenu', {
+                templateUrl: 'views/menu-form.html',
+                url: '/crear-menu',
+                controller: 'MenuController',
+                resolve: {
+                    loadMyFile: function ($ocLazyLoad) {
+                        return $ocLazyLoad.load({
+                            name: 'sbAdminApp',
+                            files: ['scripts/services/MenuService.js',
+                                'scripts/controllers/MenuController.js']
                         })
                     }
                 }

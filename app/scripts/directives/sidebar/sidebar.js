@@ -15,7 +15,7 @@ angular.module('sbAdminApp')
       replace: true,
       scope: {
       },
-      controller:function($scope){
+      controller:function($scope, MenuService){
         $scope.selectedMenu = 'dashboard';
         $scope.collapseVar = 0;
         $scope.multiCollapseVar = 0;
@@ -27,7 +27,17 @@ angular.module('sbAdminApp')
           else
             $scope.collapseVar = x;
         };
-        
+
+        $scope.menus = [];
+
+
+        MenuService.menuData.getAll().$promise.then(function (menuData) {
+          $scope.menus = menuData;
+        }, function (error) {
+          alert('Error!');
+        });
+
+
         $scope.multiCheck = function(y){
           
           if(y==$scope.multiCollapseVar)
