@@ -9,13 +9,17 @@ angular
                 username: '',
                 password: ''
             };
+            $scope.isValid = true;
 
             $scope.login = function () {
-                $scope.authServ.authenticate.login({username: $scope.credentials.username, password: $scope.credentials.password}
+                $scope.authServ.authenticate.login({username: $scope.credentials.username,
+                        password: $scope.credentials.password}
                 ).$promise.then(
                     function (data) {  // Success
+                        console.log(data);
                         if (angular.isUndefined(data.token))
                         {
+                            $scope.isValid = false;
                             $state.go('login');
                         }
                         else
@@ -25,7 +29,10 @@ angular
                         }
                     },
                     function (reason) { // Error
-
+                        console.log(reason);
+                        $scope.isValid = false;
+                        $state.go('login');
+                        return false;
                     }
                 );
             }

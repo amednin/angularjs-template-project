@@ -30,7 +30,7 @@ angular
                     return config;
                 },
                 response: function (response) {
-                    if (response.status === 403) {
+                    if (response.status === 403) {  // Forbidden
                         // handle the case where the user is not authenticated
                         console.log(response);
                         $rootScope.$broadcast('unauthorized');
