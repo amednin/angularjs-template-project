@@ -13,8 +13,16 @@ angular
                 {
                     login: {method: 'GET'}
                 }),
+
+            verifyValidToken: $resource(API_CONFIG.baseUrl + '/check', {},
+                {
+                    check: {methog: 'GET'}
+                }),
             initSession: function (token) {
-                SessionHandler.initSession(token, 'dashboard.home');
+                SessionHandler.initSession(token);
+            },
+            endSession: function () {
+                SessionHandler.clear();
             }
         };
         return service;

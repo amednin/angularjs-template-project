@@ -16,7 +16,6 @@ angular
                         password: $scope.credentials.password}
                 ).$promise.then(
                     function (data) {  // Success
-                        console.log(data);
                         if (angular.isUndefined(data.token))
                         {
                             $scope.isValid = false;
@@ -25,11 +24,27 @@ angular
                         else
                         {
                             $scope.authServ.initSession(data.token);
-                            $state.go('dashboard.home');
+                            // Verify if the token is a valid token!
+                            $scope.authServ.verifyValidToken.check().$promise.then(function (data) {
+
+                                if (!angular.isUndefined(data.success) && data.success === 'authenticated')
+                                {
+                                    $state.go('dashboard.home');
+                                }
+                                else
+                                {
+                                    $scope.authServ.endSession();
+                                    $scope.isValid = false;
+                                    $state.go('login');
+                                }
+                            },
+                            function (error) {
+                                $scope.isValid = false;
+                                $state.go('login');
+                            });
                         }
                     },
                     function (reason) { // Error
-                        console.log(reason);
                         $scope.isValid = false;
                         $state.go('login');
                         return false;

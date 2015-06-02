@@ -17,6 +17,7 @@ angular
         {
             initSession: function (token) {
                 $window.sessionStorage.token = token;
+                console.log(token);
             },
 
             validSession: function () {
