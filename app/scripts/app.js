@@ -15,23 +15,28 @@ var mainApp = angular
         'angular-loading-bar',
         'ngResource'
     ])
+
+    /**
+     * Configuración de la aplicación. Se define todos los estados
+     * posibles para acceder a las vistas a partir de las urls.
+     */
     .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $httpProvider) {
 
-        //$httpProvider.defaults.useXDomain = true;
         delete $httpProvider.defaults.headers.common['X-Requested-With'];
-
-        //$httpProvider.defaults.headers.common = {};
-        //$httpProvider.defaults.headers.post = {};
-        //$httpProvider.defaults.headers.put = {};
-        //$httpProvider.defaults.headers.patch = {};
 
         $ocLazyLoadProvider.config({
             debug: false,
             events: true
         });
 
+        /**
+         * Ruta por defecto.
+         */
         $urlRouterProvider.otherwise('/dashboard/home');
 
+        /**
+         * Inicializar y definir los estados.
+         */
         $stateProvider
             .state('dashboard', {
                 url: '/dashboard',
@@ -48,6 +53,10 @@ var mainApp = angular
                                     'scripts/directives/sidebar/sidebar-search/sidebar-search.js'
                                 ]
                             })
+                        /**
+                         * Ejemplo de todas las bondades que nos brinda el template.
+                         * Ejemplo de como cargar las librerías, directivas, etc.
+                         */
                         $ocLazyLoad.load(
                             {
                                 name: 'toggle-switch',

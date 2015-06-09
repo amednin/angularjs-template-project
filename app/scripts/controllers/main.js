@@ -9,6 +9,9 @@
 angular.module('sbAdminApp')
   .controller('MainCtrl', function($scope,$position,$rootScope,$state, SessionHandler) {
 
+        /**
+         * Terminar la sesion.
+         */
         function automaticLogout() {
             SessionHandler.clear();
             $state.go('login');
@@ -23,6 +26,9 @@ angular.module('sbAdminApp')
 
         });
 
+        /**
+         * La acción que debe ejecutarse cuando se emita el evento 'unauthorized'
+         */
         $rootScope.$on('unauthorized', function () {
             automaticLogout();
             return false;

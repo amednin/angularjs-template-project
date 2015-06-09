@@ -4,7 +4,10 @@
 
 'use strict';
 
-
+/**
+ * Interceptor de los request enviados por el objeto
+ * $http para poder modificar alguno de sus métodos.
+ */
 angular
     .module('sbAdminApp')
     .config(['$provide', '$httpProvider', function ($provide, $httpProvider) {
