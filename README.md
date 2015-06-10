@@ -39,4 +39,24 @@ Si solo se requiere crear el archivo sin levantar el server ejecutar:
 
 Revisar archivo Gruntfile.js para conocer las configuraciones.
 
+###Ref.:
+
+[SB Bootstrap Template](http://startbootstrap.com/template-overviews/sb-admin/)
+
+[yeoman] (http://yeoman.io/)
+
+[Grunt](http://gruntjs.com/getting-started)
+
+[Grunt Config Tasks](http://gruntjs.com/configuring-tasks)
+
+[Grunt watch task](https://github.com/gruntjs/grunt-contrib-watch)
+
+[Livereload for live reloading](https://github.com/gruntjs/grunt-contrib-watch#optionslivereload)
+
+[jshint](http://jshint.com/)
+
+[concat task](https://github.com/gruntjs/grunt-contrib-concat)
+
+[uglify task for minifications](https://github.com/gruntjs/grunt-contrib-uglify)
+
 Preguntas: amed.nin@gmail.com, skype: amed.ia
