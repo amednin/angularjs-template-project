@@ -6,6 +6,8 @@
  * # sbAdminApp
  *
  * Main module of the application.
+ *
+ * Definimos el módulo de nuestra aplicación.
  */
 var mainApp = angular
     .module('sbAdminApp', [
